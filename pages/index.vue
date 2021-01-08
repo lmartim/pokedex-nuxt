@@ -1,28 +1,29 @@
 <template>
-  <div class="container">
-    <div>
-      <div class="links">
-        <select id="pokedex-select" @change="selectPokemon">
-          <option>Select a Pokémon</option>
-        </select>
-        <div class="pokedex-slot" v-if="selectedPokemon">
-          <div class="main">
-            <div v-html="selectedPokemon.name" />
-            <img :src="selectedPokemon.sprites.front_default" />
-          </div>
-          <div class="data">
-            <b>Abilities</b>
-            <ul>
-              <li v-for="ability in selectedPokemon.abilities" :key="ability.key" v-html="ability.ability.name" />
-            </ul>
-          </div>
-        </div>
-      </div>
+  <div class="container flex-col">
+    <div class="grid grid-cols-4 gap-3">
+      <PokemonCard 
+        v-for="(pokemon, index) in list[pagination]" 
+        :key="index"
+        :name="pokemon.name"
+        :number="(index + 1) + (pagination * 16)"
+      />
+    </div>
+    <div class="grid grid-cols-2 gap-3 mt-10">
+      <Button 
+        label="Previous"
+        :disabled="pagination <= 0"
+        @click="updateList(-1)" 
+      />
+      <Button 
+        label="Next"
+        @click="updateList(1)"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Logo from '~/components/Logo.vue'
 
 export default {
@@ -30,42 +31,26 @@ export default {
     Logo
   },
   data() {
-    return {
-      pokedex: {},
-      selectedPokemon: null
-    }
+    return { }
   },
-  mounted() {
-    const pokedexSelect = document.getElementById('pokedex-select');
-    
-    this.$axios.get(`https://pokeapi.co/api/v2/pokedex/kanto`)
-    .then((res) => {
-      this.pokedex = res.data.pokemon_entries
-
-      res.data.pokemon_entries.forEach(el => {
-        let option = document.createElement("option")
-        option.value = el.entry_number
-        option.innerHTML = el.pokemon_species.name
-
-        pokedexSelect.appendChild(option);
-      })
+  computed: {
+    ...mapState({
+      list: state => state.pokemons.list,
+      pagination: state => state.pokemons.pagination
     })
   },
+  mounted() {
+    if (!this.list.length) this.$store.dispatch("pokemons/getInitialList")
+  },
   methods: {
-    selectPokemon({e, target}) {
-      const pokemonId = target.value
-
-      this.$axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-      .then((res) => {
-        console.log(res.data)
-        this.selectedPokemon = res.data
-      })
+    updateList(update) {
+      this.$store.dispatch("pokemons/updateList", this.pagination + update)
     }
   }
 }
 </script>
 
-<style lang="postcss">
+<style lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
