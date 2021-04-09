@@ -1,5 +1,11 @@
 [
   {
+    "name": "pokemon",
+    "path": "/pokemon",
+    "component": "E:\\\\Projetos\\\\pokedex-nuxt\\\\pages\\\\pokemon.vue",
+    "chunkName": "pages/pokemon"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "E:\\\\Projetos\\\\pokedex-nuxt\\\\pages\\\\index.vue",

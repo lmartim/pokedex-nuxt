@@ -1,50 +1,56 @@
 <template>
   <div class="container flex-col">
-    <div class="grid grid-cols-4 gap-3">
-      <PokemonCard 
-        v-for="(pokemon, index) in list[pagination]" 
-        :key="index"
-        :name="pokemon.name"
-        :number="(index + 1) + (pagination * 16)"
-      />
+    <div v-if="loading">
+      <PokeballLoader />
     </div>
-    <div class="grid grid-cols-2 gap-3 mt-10">
-      <Button 
-        label="Previous"
-        :disabled="pagination <= 0"
-        @click="updateList(-1)" 
-      />
-      <Button 
-        label="Next"
-        @click="updateList(1)"
-      />
+    <div v-else>
+      <div class="grid grid-cols-4 gap-3">
+        <PokemonCard 
+          v-for="(pokemon, index) in list[pagination]" 
+          :key="index"
+          :name="pokemon.name"
+          :number="(index + 1) + (pagination * 16)"
+          @click="navigate(pokemon.name)"
+        />
+      </div>
+      <div class="grid grid-cols-2 gap-3 mt-10">
+        <Button 
+          label="Previous"
+          :disabled="pagination <= 0"
+          @click="updateList(-1)" 
+        />
+        <Button 
+          label="Next"
+          @click="updateList(1)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import Logo from '~/components/Logo.vue'
 
 export default {
-  components: {
-    Logo
-  },
   data() {
     return { }
   },
   computed: {
     ...mapState({
-      list: state => state.pokemons.list,
-      pagination: state => state.pokemons.pagination
+      list: state => state.pokemonList.list,
+      pagination: state => state.pokemonList.pagination,
+      loading: state => state.pokemonList.loading
     })
   },
   mounted() {
-    if (!this.list.length) this.$store.dispatch("pokemons/getInitialList")
+    if (!this.list.length) this.$store.dispatch("pokemonList/getInitialList")
   },
   methods: {
     updateList(update) {
-      this.$store.dispatch("pokemons/updateList", this.pagination + update)
+      this.$store.dispatch("pokemonList/updateList", this.pagination + update)
+    },
+    navigate(pokemon) {
+      this.$store.dispatch("pokemon/getPokemon", pokemon)
     }
   }
 }

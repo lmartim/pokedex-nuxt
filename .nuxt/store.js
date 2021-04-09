@@ -17,14 +17,16 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('..\\store\\pokemons.js'), 'pokemons.js')
+  resolveStoreModules(require('..\\store\\pokemon.js'), 'pokemon.js')
+  resolveStoreModules(require('..\\store\\pokemonList.js'), 'pokemonList.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '..\\store\\pokemons.js',
+      '..\\store\\pokemon.js',
+      '..\\store\\pokemonList.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()
