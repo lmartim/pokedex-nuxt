@@ -1,11 +1,16 @@
 const routerBase =
-  process.env.DEPLOY_ENV === "GH_PAGES" ? {
+  process.env.DEPLOY_ENV === "GH_PAGES" ? 
+  {
     router: {
-      base: "pokedex-nuxt"
+      base: "/pokedex-nuxt/"
     }
-  } : {}
+  } : {};
 
 export default {
+  target: 'static',
+
+  ...routerBase,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'pokedex-nuxt',
@@ -53,7 +58,5 @@ export default {
   env: {
     pokeApiGateway: 'https://pokeapi.co/api/v2',
     pokeImage: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
-  },
-
-  ...routerBase
+  }
 } 

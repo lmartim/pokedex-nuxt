@@ -169,7 +169,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {}
+      env: {"pokeApiGateway":"https://pokeapi.co/api/v2","pokeImage":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"}
     }
     // Only set once
     if (!process.static && context.req) {

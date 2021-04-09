@@ -1,28 +1,4 @@
-import Vue from "vue";
-
-export const state = () => ({
-  name: '',
-  selected: {},
-  evolutionChain: {},
-  loading: false,
-})
-
-export const mutations = {
-  UPDATE_NAME (state, name) {
-    state.name = name
-  },
-  UPDATE_SELECTED (state, pokemon) {
-    state.selected = pokemon
-  },
-  UPDATE_EVOLUTION_CHAIN (state, chain) {
-    state.evolutionChain = chain
-  },
-  UPDATE_LOADING (state, loading) {
-    state.loading = loading
-  }
-}
-
-export const actions = {
+const actions = {
   async getPokemon({ state: { name }, commit }, pokemon) {
     commit('UPDATE_NAME', pokemon)
     commit('UPDATE_LOADING', true)
@@ -41,3 +17,5 @@ export const actions = {
     })
   }
 }
+
+export default actions

@@ -1,24 +1,4 @@
-import Vue from "vue";
-
-export const state = () => ({
-  list: [],
-  pagination: 0,
-  loading: false
-})
-
-export const mutations = {
-  UPDATE_LIST (state, { list, pagination }) {
-    Vue.set(state.list, pagination, list)
-  },
-  UPDATE_PAGINATION (state, newPagination) {
-    state.pagination = newPagination
-  },
-  UPDATE_LOADING (state, loading) {
-    state.loading = loading
-  }
-}
-
-export const actions = {
+const actions = {
   async getInitialList({commit}) {
     const { data } = await this.$axios.get(`${process.env.pokeApiGateway}/pokemon?limit=16`)
 
@@ -44,3 +24,5 @@ export const actions = {
     commit('UPDATE_PAGINATION', newPagination || 0)
   }
 }
+
+export default actions
