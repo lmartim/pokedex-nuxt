@@ -1,0 +1,13 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/index.js": "pages/index.js",
+    "pages/pokemon.js": "pages/pokemon.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/index.js": "pages/index.js.map",
+    "pages/pokemon.js": "pages/pokemon.js.map",
+    "server.js": "server.js.map"
+  }
+}
