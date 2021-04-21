@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fpokedex-nuxt\u002F_nuxt\u002Fstatic\u002F1619043821",layout:"default",error:null,state:{pokemon:{name:"",selected:{},evolutionChain:{},loading:a},pokemonList:{list:[],pagination:0,loading:a}},serverRendered:true,routePath:"\u002F",config:{}}}(false));
