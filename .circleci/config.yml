@@ -1,4 +1,12 @@
 version: 2.1
+workflows:
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: 
+                - circleci
 jobs:
   build:
     docker:
