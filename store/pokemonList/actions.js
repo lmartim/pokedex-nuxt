@@ -28,5 +28,5 @@ const actions = {
     commit('UPDATE_PAGINATION', newPagination || 0)
   },
 }
- 
+
 export default actions
