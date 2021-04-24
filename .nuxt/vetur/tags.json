@@ -1,26 +1,26 @@
 {
-  "PokeballLoader": {
-    "description": "Auto imported from components/PokeballLoader/PokeballLoader.vue"
-  },
-  "LazyPokeballLoader": {
-    "description": "Auto imported from components/PokeballLoader/PokeballLoader.vue"
-  },
   "Button": {
     "description": "Auto imported from components/Button/Button.vue"
   },
   "LazyButton": {
     "description": "Auto imported from components/Button/Button.vue"
   },
-  "PokemonCard": {
-    "description": "Auto imported from components/PokemonCard/PokemonCard.vue"
-  },
-  "LazyPokemonCard": {
-    "description": "Auto imported from components/PokemonCard/PokemonCard.vue"
-  },
   "PokemonTypeBadge": {
     "description": "Auto imported from components/PokemonTypeBadge/PokemonTypeBadge.vue"
   },
   "LazyPokemonTypeBadge": {
     "description": "Auto imported from components/PokemonTypeBadge/PokemonTypeBadge.vue"
+  },
+  "PokeballLoader": {
+    "description": "Auto imported from components/PokeballLoader/PokeballLoader.vue"
+  },
+  "LazyPokeballLoader": {
+    "description": "Auto imported from components/PokeballLoader/PokeballLoader.vue"
+  },
+  "PokemonCard": {
+    "description": "Auto imported from components/PokemonCard/PokemonCard.vue"
+  },
+  "LazyPokemonCard": {
+    "description": "Auto imported from components/PokemonCard/PokemonCard.vue"
   }
 }

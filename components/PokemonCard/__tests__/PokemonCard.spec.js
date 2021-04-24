@@ -6,10 +6,10 @@ describe('components/PokemonCard', () => {
     const wrapper = shallowMount(PokemonCard, {
       propsData: {
         name: 'Charizard',
-        number: 6
-      }
+        number: 6,
+      },
     })
-  
+
     it('Checking Card label', () => {
       expect(wrapper.text()).toContain('Charizard')
     })

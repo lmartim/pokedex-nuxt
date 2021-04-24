@@ -5,10 +5,10 @@ describe('components/Button', () => {
   describe('Button rendering', () => {
     const wrapper = shallowMount(Button, {
       propsData: {
-        label: 'Button Label'
-      }
+        label: 'Button Label',
+      },
     })
-  
+
     it('Checking Button label', () => {
       expect(wrapper.text()).toContain('Button Label')
     })

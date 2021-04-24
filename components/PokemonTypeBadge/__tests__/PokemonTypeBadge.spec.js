@@ -5,10 +5,10 @@ describe('components/PokemonTypeBadge', () => {
   describe('Rendering Badge with Fire type', () => {
     const wrapper = shallowMount(PokemonTypeBadge, {
       propsData: {
-        type: 'fire'
-      }
+        type: 'fire',
+      },
     })
-  
+
     it('Checking Badge label', () => {
       expect(wrapper.text()).toContain('fire')
     })

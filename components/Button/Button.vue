@@ -1,17 +1,20 @@
 <template>
-  <button 
-    class="bg-blue-500 px-5 py-3 rounded-lg text-white" 
-    v-on="$listeners" 
+  <button
+    class="bg-blue-500 px-5 py-3 rounded-lg text-white"
     v-bind="$attrs"
+    v-on="$listeners"
   >
-    {{label}}
+    {{ label }}
   </button>
 </template>
 
 <script>
 export default {
   props: {
-    label: String,
-  }
+    label: {
+      type: String,
+      default: 'Button Label',
+    },
+  },
 }
 </script>

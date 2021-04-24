@@ -5,24 +5,21 @@
     </div>
     <div v-else>
       <div class="grid grid-cols-4 gap-3">
-        <PokemonCard 
-          v-for="(pokemon, index) in list[pagination]" 
+        <PokemonCard
+          v-for="(pokemon, index) in list[pagination]"
           :key="index"
           :name="pokemon.name"
-          :number="(index + 1) + (pagination * 16)"
+          :number="index + 1 + pagination * 16"
           @click="navigate(pokemon.name)"
         />
       </div>
       <div class="grid grid-cols-2 gap-3 mt-10">
-        <Button 
+        <Button
           label="Previous"
           :disabled="pagination <= 0"
-          @click="updateList(-1)" 
+          @click="updateList(-1)"
         />
-        <Button 
-          label="Next"
-          @click="updateList(1)"
-        />
+        <Button label="Next" @click="updateList(1)" />
       </div>
     </div>
   </div>
@@ -33,26 +30,26 @@ import { mapState } from 'vuex'
 
 export default {
   data() {
-    return { }
+    return {}
   },
   computed: {
     ...mapState({
-      list: state => state.pokemonList.list,
-      pagination: state => state.pokemonList.pagination,
-      loading: state => state.pokemonList.loading
-    })
+      list: (state) => state.pokemonList.list,
+      pagination: (state) => state.pokemonList.pagination,
+      loading: (state) => state.pokemonList.loading,
+    }),
   },
   mounted() {
-    if (!this.list.length) this.$store.dispatch("pokemonList/getInitialList")
+    if (!this.list.length) this.$store.dispatch('pokemonList/getInitialList')
   },
   methods: {
     updateList(update) {
-      this.$store.dispatch("pokemonList/updateList", this.pagination + update)
+      this.$store.dispatch('pokemonList/updateList', this.pagination + update)
     },
     navigate(pokemon) {
-      this.$store.dispatch("pokemon/getPokemon", pokemon)
-    }
-  }
+      this.$store.dispatch('pokemon/getPokemon', pokemon)
+    },
+  },
 }
 </script>
 

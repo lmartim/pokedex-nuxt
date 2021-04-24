@@ -3,14 +3,12 @@
     "name": "pokemon",
     "path": "/pokemon",
     "component": "E:\\\\Projetos\\\\pokedex-nuxt\\\\pages\\\\pokemon.vue",
-    "chunkName": "pages/pokemon",
-    "_name": "_237fa294"
+    "chunkName": "pages/pokemon"
   },
   {
     "name": "index",
     "path": "/",
     "component": "E:\\\\Projetos\\\\pokedex-nuxt\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_9fe2e55a"
+    "chunkName": "pages/index"
   }
 ]

@@ -14,6 +14,9 @@ jobs:
           name: install-packages
           command: npm install
       - run:
+          name: JS Lint
+          command: npm run lint
+      - run:
           name: JS Test Suite
           command: npm run test
           environment:
